@@ -4,12 +4,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.communication.FRCNetworkCommunicationsLibrary;
 
 public class DebugOutput extends Command {
+	
 	private static final double DELAY_SEC = 0.5;
 
-	private Debugable debugables[];
-
 	/**
-	 * Classes implementing this interface must have a debuging output method.
+	 * Classes implementing this interface must have a debugging output method.
 	 */
 	public interface Debugable {
 
@@ -21,19 +20,19 @@ public class DebugOutput extends Command {
 		public String[] getDebug();
 	}
 
+	private Debugable debugables[];
+
 	public DebugOutput(Debugable debugables[]) {
 		this.debugables = debugables;
 	}
 
-	// Called just before this Command runs the first time
 	protected void initialize() {
-		/* Try not to spam drive station. */
+		/* Try not to spam the drive station. */
 		if (timeSinceInitialized() < DELAY_SEC) {
 			cancel();
 		}
 	}
 
-	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		for (Debugable d : debugables) {
 			for (String s : d.getDebug()) {
@@ -42,17 +41,13 @@ public class DebugOutput extends Command {
 		}
 	}
 
-	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		return true;
 	}
 
-	// Called once after isFinished returns true
 	protected void end() {
 	}
 
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
 	protected void interrupted() {
 	}
 }

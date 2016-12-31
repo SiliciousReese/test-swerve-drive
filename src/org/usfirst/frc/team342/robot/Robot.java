@@ -19,10 +19,10 @@ public class Robot extends IterativeRobot {
 
 	private DebugOutput.Debugable debugableSystems[];
 
-	/*
-	 * This is the only class that runs the drivessytem constructor, all other
-	 * classes that need access to the drive system must have it given to them
-	 * by this class.
+	/**
+	 * Robot.java is the only class that runs the drivessytem constructor, all
+	 * other classes that need access to the drive system must have it given to
+	 * them by this class.
 	 */
 	private DriveSystem drive;
 	private SwerveDriveWithJoystick swerveDriveCommand;
@@ -32,17 +32,14 @@ public class Robot extends IterativeRobot {
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
-		// oi = new OI();
-		// chooser = new SendableChooser();
-		// chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		// SmartDashboard.putData("Auto mode", chooser);
-
 		drive = new DriveSystem();
 
+		/*
+		 * All systems that debugging info should come from go into this array.
+		 */
 		debugableSystems = new DebugOutput.Debugable[1];
 		debugableSystems[0] = drive;
-		
+
 		OI.setupButtons(debugableSystems);
 
 		swerveDriveCommand = new SwerveDriveWithJoystick(drive);
@@ -60,29 +57,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 	}
 
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString code to get the auto name from the text box below the Gyro
-	 *
-	 * You can add additional auto modes by adding additional commands to the
-	 * chooser code above (like the commented example) or additional comparisons
-	 * to the switch structure below with additional strings & commands.
-	 */
 	public void autonomousInit() {
-		// autonomousCommand = (Command) chooser.getSelected();
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
-		// if (autonomousCommand != null) autonomousCommand.start();
 	}
 
 	/**
@@ -94,12 +69,6 @@ public class Robot extends IterativeRobot {
 
 	/** Reinitializes the teleop drive command every time teleop is started. */
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
-		// if (autonomousCommand != null) autonomousCommand.cancel();
-
 		swerveDriveCommand = new SwerveDriveWithJoystick(drive);
 	}
 
