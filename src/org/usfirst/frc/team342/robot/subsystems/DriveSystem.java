@@ -3,10 +3,11 @@ package org.usfirst.frc.team342.robot.subsystems;
 import org.usfirst.frc.team342.robot.RobotMap;
 import org.usfirst.frc.team342.robot.commands.DebugOutput;
 
-import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.CANTalon.FeedbackDevice;
-import edu.wpi.first.wpilibj.CANTalon.FeedbackDeviceStatus;
-import edu.wpi.first.wpilibj.CANTalon.TalonControlMode;
+import com.ctre.CANTalon;
+import com.ctre.CANTalon.FeedbackDevice;
+import com.ctre.CANTalon.FeedbackDeviceStatus;
+import com.ctre.CANTalon.TalonControlMode;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveSystem extends Subsystem implements DebugOutput.Debugable {
@@ -40,7 +41,7 @@ public class DriveSystem extends Subsystem implements DebugOutput.Debugable {
 			driveMotors[i].set(RobotMap.FR_DRIVE_TALON);
 		}
 
-		/* Create position motors. These control the angle of the wheel. */
+		/* Create position motors. */
 		positionMotors = new CANTalon[4];
 		positionMotors[0] = new CANTalon(RobotMap.FR_ANGLE_TALON);
 		positionMotors[1] = new CANTalon(RobotMap.FL_ANGLE_TALON);
