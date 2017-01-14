@@ -1,12 +1,14 @@
 package org.usfirst.frc.team342.robot;
 
 import org.usfirst.frc.team342.robot.commands.DebugOutput;
+import org.usfirst.frc.team342.robot.commands.DebugOutput.Debugable;
 import org.usfirst.frc.team342.robot.commands.SwerveDriveWithJoystick;
 import org.usfirst.frc.team342.robot.subsystems.DriveSystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,6 +28,8 @@ public class Robot extends IterativeRobot {
 	 */
 	private DriveSystem drive;
 	private SwerveDriveWithJoystick swerveDriveCommand;
+	
+	private DebugOutput debug;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -70,6 +74,8 @@ public class Robot extends IterativeRobot {
 	/** Reinitializes the teleop drive command every time teleop is started. */
 	public void teleopInit() {
 		swerveDriveCommand = new SwerveDriveWithJoystick(drive);
+		Debugable[] debugables = {drive};
+		debug = new DebugOutput(debugables);
 	}
 
 	/**
@@ -78,6 +84,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		swerveDriveCommand.start();
+		debug.start();
 	}
 
 	/**

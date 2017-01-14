@@ -13,12 +13,12 @@ public class RobotMap {
 	 */
 
 	public static final int FR_DRIVE_TALON = 1;
-	public static final int FL_DRIVE_TALON = 2;
-	public static final int RR_DRIVE_TALON = 3;
-	public static final int RL_DRIVE_TALON = 4;
+	public static final int FL_DRIVE_TALON = 4;
+	public static final int RR_DRIVE_TALON = 2;
+	public static final int RL_DRIVE_TALON = 3;
 
 	public static final int FR_ANGLE_TALON = 5;
-	public static final int FL_ANGLE_TALON = 6;
-	public static final int RR_ANGLE_TALON = 7;
-	public static final int RL_ANGLE_TALON = 8;
+	public static final int FL_ANGLE_TALON = 8;
+	public static final int RR_ANGLE_TALON = 6;
+	public static final int RL_ANGLE_TALON = 7;
 }

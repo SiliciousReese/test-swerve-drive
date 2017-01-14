@@ -1,6 +1,7 @@
 package org.usfirst.frc.team342.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DebugOutput extends Command {
 
@@ -19,10 +20,10 @@ public class DebugOutput extends Command {
 	public String[] getDebug();
     }
 
-    // private Debugable debugables[];
+    private Debugable debugables[];
 
     public DebugOutput(Debugable debugables[]) {
-	// this.debugables = debugables;
+	this.debugables = debugables;
     }
 
     protected void initialize() {
@@ -34,11 +35,11 @@ public class DebugOutput extends Command {
 
     protected void execute() {
 	/* TODO Add debug output to drive station. */
-	// for (Debugable d : debugables) {
-	// for (String s : d.getDebug()) {
-	// FRCNetworkCommunicationsLibrary.HALSetErrorData(s);
-	// }
-	// }
+	for (Debugable d : debugables) {
+	    for (String s : d.getDebug()) {
+		SmartDashboard.putNumber(s, 0);
+	    }
+	}
     }
 
     protected boolean isFinished() {
